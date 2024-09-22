@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.oo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Job {
@@ -43,6 +45,42 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString(){
+
+        ArrayList <String> jobAttributes = new ArrayList();
+
+        jobAttributes.add(name);
+        jobAttributes.add(employer.toString());
+        jobAttributes.add(location.toString());
+        jobAttributes.add(positionType.toString());
+        jobAttributes.add(coreCompetency.toString());
+
+        ArrayList <String> outputArray = new ArrayList();
+
+        for (String item : jobAttributes){
+            if (item.isBlank()){
+                outputArray.add("Data not available");
+            }
+            else{
+                outputArray.add(item);
+            }
+        }
+
+        String formattedOutput =
+            System.lineSeparator() +
+            "ID: " + id + System.lineSeparator() +
+            "Name: " + outputArray.get(0) + System.lineSeparator() +
+            "Employer: " + outputArray.get(1) + System.lineSeparator() +
+            "Location: " + outputArray.get(2) + System.lineSeparator() +
+            "Position Type: " + outputArray.get(3) + System.lineSeparator() +
+            "Core Competency: " + outputArray.get(4) +
+            System.lineSeparator();
+
+        return formattedOutput;
+
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID

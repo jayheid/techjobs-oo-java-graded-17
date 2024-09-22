@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -50,7 +51,70 @@ public class JobTest {
                 new CoreCompetency("Persistence"));
 
         assertFalse(job1.equals(job2), "Two Job objects with identical fields are NOT equal if id values differ");
+    }
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
+        boolean conditionOne = job1.toString().startsWith(System.lineSeparator());
+        boolean conditionTwo = job1.toString().endsWith(System.lineSeparator());
+
+        String message = "toString method begins and ends with new line";
+
+        assertTrue(conditionOne && conditionTwo, message);
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
+        String expectedOuput =
+            System.lineSeparator() +
+            "ID: " + job1.getId() + System.lineSeparator() +
+            "Name: " + job1.getName() + System.lineSeparator() +
+            "Employer: " + job1.getEmployer() + System.lineSeparator() +
+            "Location: " + job1.getLocation() + System.lineSeparator() +
+            "Position Type: " + job1.getPositionType() + System.lineSeparator() +
+            "Core Competency: " + job1.getCoreCompetency() +
+            System.lineSeparator();
+
+        String message = "toString method returns correct labels and values";
+
+        assertEquals(job1.toString(), expectedOuput, message);
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job job1 = new Job("Product tester",
+                new Employer(""),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
+        String notAvailable = "Data not available";
+
+        String expectedOuput =
+                System.lineSeparator() +
+                        "ID: " + job1.getId() + System.lineSeparator() +
+                        "Name: " + job1.getName() + System.lineSeparator() +
+                        "Employer: " + notAvailable + System.lineSeparator() +
+                        "Location: " + job1.getLocation() + System.lineSeparator() +
+                        "Position Type: " + job1.getPositionType() + System.lineSeparator() +
+                        "Core Competency: " + job1.getCoreCompetency() +
+                        System.lineSeparator();
+
+        String message = "Correctly handles missing value for field";
+
+        assertEquals(job1.toString(), expectedOuput, message);
     }
 
 }
