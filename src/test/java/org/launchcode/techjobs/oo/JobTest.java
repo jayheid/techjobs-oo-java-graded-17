@@ -2,6 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
 
+import static java.lang.System.lineSeparator;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JobTest {
@@ -60,8 +61,8 @@ public class JobTest {
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
 
-        boolean conditionOne = job1.toString().startsWith(System.lineSeparator());
-        boolean conditionTwo = job1.toString().endsWith(System.lineSeparator());
+        boolean conditionOne = job1.toString().startsWith(lineSeparator());
+        boolean conditionTwo = job1.toString().endsWith(lineSeparator());
 
         String message = "toString method begins and ends with new line";
 
@@ -77,14 +78,14 @@ public class JobTest {
                 new CoreCompetency("Persistence"));
 
         String expectedOuput =
-            System.lineSeparator() +
-            "ID: " + job1.getId() + System.lineSeparator() +
-            "Name: " + job1.getName() + System.lineSeparator() +
-            "Employer: " + job1.getEmployer() + System.lineSeparator() +
-            "Location: " + job1.getLocation() + System.lineSeparator() +
-            "Position Type: " + job1.getPositionType() + System.lineSeparator() +
+            lineSeparator() +
+            "ID: " + job1.getId() + lineSeparator() +
+            "Name: " + job1.getName() + lineSeparator() +
+            "Employer: " + job1.getEmployer() + lineSeparator() +
+            "Location: " + job1.getLocation() + lineSeparator() +
+            "Position Type: " + job1.getPositionType() + lineSeparator() +
             "Core Competency: " + job1.getCoreCompetency() +
-            System.lineSeparator();
+            lineSeparator();
 
         String message = "toString method returns correct labels and values";
 
@@ -102,14 +103,14 @@ public class JobTest {
         String notAvailable = "Data not available";
 
         String expectedOuput =
-                System.lineSeparator() +
-                        "ID: " + job1.getId() + System.lineSeparator() +
-                        "Name: " + job1.getName() + System.lineSeparator() +
-                        "Employer: " + notAvailable + System.lineSeparator() +
-                        "Location: " + job1.getLocation() + System.lineSeparator() +
-                        "Position Type: " + job1.getPositionType() + System.lineSeparator() +
+                lineSeparator() +
+                        "ID: " + job1.getId() + lineSeparator() +
+                        "Name: " + job1.getName() + lineSeparator() +
+                        "Employer: " + notAvailable + lineSeparator() +
+                        "Location: " + job1.getLocation() + lineSeparator() +
+                        "Position Type: " + job1.getPositionType() + lineSeparator() +
                         "Core Competency: " + job1.getCoreCompetency() +
-                        System.lineSeparator();
+                        lineSeparator();
 
         String message = "Correctly handles missing value for field";
 
